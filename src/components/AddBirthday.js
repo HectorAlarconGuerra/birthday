@@ -11,6 +11,7 @@ import moment from 'moment';
 import firebase from '../utils/firebase';
 import 'firebase/firestore';
 
+firebase.firestore().settings({experimentalForceLongPolling: true});
 const db = firebase.firestore(firebase);
 
 export default function AddBirthday() {
@@ -48,7 +49,7 @@ export default function AddBirthday() {
     } else {
       const data = formData;
       data.dateBirth.setYear(0);
-      db.collection('cumples')
+      db.collection('aniver')
         .add(data)
         .then(() => {
           console.log('OK');
